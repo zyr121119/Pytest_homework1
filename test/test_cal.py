@@ -40,4 +40,11 @@ class TestCal:
 
     @pytest.mark.parametrize("a,b,expect", readyaml("div"))
     def test_div(self, a, b, expect):
-        assert self.cal.div(a, b) == expect
+        if b==0:
+            with pytest.raises(ValueError) as f:
+                self.cal.div(a,b)
+            assert f.value.args[0]=="除数不能为0"
+            assert f.type==ValueError
+        else:
+            assert self.cal.div(a,b) == expect
+
