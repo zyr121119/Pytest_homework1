@@ -1,0 +1,116 @@
+{
+  "uid" : "e075c0c1c0eec05a",
+  "name" : "test_add[int]",
+  "fullName" : "test_cal_new.TestCal#test_add",
+  "historyId" : "f70d62cccafe48880d94e963cf12dad1",
+  "time" : {
+    "start" : 1609067387771,
+    "stop" : 1609067387771,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "get_cal",
+    "time" : {
+      "start" : 1609067387661,
+      "stop" : 1609067387731,
+      "duration" : 70
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_adddata",
+    "time" : {
+      "start" : 1609067387731,
+      "stop" : 1609067387731,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "get_cal::0",
+    "time" : {
+      "start" : 1609067388681,
+      "stop" : 1609067388681,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_adddata::0",
+    "time" : {
+      "start" : 1609067387801,
+      "stop" : 1609067387801,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "run(order=1)"
+  }, {
+    "name" : "suite",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCal"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-VD3CM5VB"
+  }, {
+    "name" : "thread",
+    "value" : "4588-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "get_adddata",
+    "value" : "[1, 2, 3]"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "run(order=1)" ]
+  },
+  "source" : "e075c0c1c0eec05a.json",
+  "parameterValues" : [ "[1, 2, 3]" ]
+}

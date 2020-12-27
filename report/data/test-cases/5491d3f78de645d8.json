@@ -1,0 +1,116 @@
+{
+  "uid" : "5491d3f78de645d8",
+  "name" : "test_div[int]",
+  "fullName" : "test_cal_new.TestCal#test_div",
+  "historyId" : "c1fbbd5e617de0a3efe0d053412f52d0",
+  "time" : {
+    "start" : 1609067388571,
+    "stop" : 1609067388581,
+    "duration" : 10
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "get_cal",
+    "time" : {
+      "start" : 1609067387661,
+      "stop" : 1609067387731,
+      "duration" : 70
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_divdata",
+    "time" : {
+      "start" : 1609067388571,
+      "stop" : 1609067388571,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "get_cal::0",
+    "time" : {
+      "start" : 1609067388681,
+      "stop" : 1609067388681,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_divdata::0",
+    "time" : {
+      "start" : 1609067388581,
+      "stop" : 1609067388591,
+      "duration" : 10
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "run(order=4)"
+  }, {
+    "name" : "suite",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCal"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-VD3CM5VB"
+  }, {
+    "name" : "thread",
+    "value" : "4588-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "get_divdata",
+    "value" : "[4, 2, 2]"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "run(order=4)" ]
+  },
+  "source" : "5491d3f78de645d8.json",
+  "parameterValues" : [ "[4, 2, 2]" ]
+}

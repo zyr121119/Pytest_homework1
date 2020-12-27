@@ -1,0 +1,118 @@
+{
+  "uid" : "978899f8298af86",
+  "name" : "test_add[exceptnull]",
+  "fullName" : "test_cal_new.TestCal#test_add",
+  "historyId" : "8a985429d9701ebf24bf557873c290b2",
+  "time" : {
+    "start" : 1609067387881,
+    "stop" : 1609067387881,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert False",
+  "statusTrace" : "self = <test_cal_new.TestCal object at 0x0000010DBBCC6F10>, get_cal = <pythoncode.calculator.Calculator object at 0x0000010DBBCB3970>\nget_adddata = [None, None, None]\n\n    @pytest.mark.run(order=1)\n    def test_add(self,get_cal,get_adddata):\n        try:\n            cal = get_cal\n            list1 = get_adddata\n>           assert cal.add(list1[0], list1[1]) == approx(list1[2], rel=1e-2)\n\ntest_cal_new.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pythoncode.calculator.Calculator object at 0x0000010DBBCB3970>, a = None, b = None\n\n    def add(self,a,b):\n>       return a+b\nE       TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'\n\npythoncode\\calculator.py:3: TypeError\n\nDuring handling of the above exception, another exception occurred:\n\nself = <test_cal_new.TestCal object at 0x0000010DBBCC6F10>, get_cal = <pythoncode.calculator.Calculator object at 0x0000010DBBCB3970>\nget_adddata = [None, None, None]\n\n    @pytest.mark.run(order=1)\n    def test_add(self,get_cal,get_adddata):\n        try:\n            cal = get_cal\n            list1 = get_adddata\n            assert cal.add(list1[0], list1[1]) == approx(list1[2], rel=1e-2)\n        except Exception as e:\n                print(\"参数异常\")\n>               assert False\nE               assert False\n\ntest_cal_new.py:15: AssertionError",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "get_cal",
+    "time" : {
+      "start" : 1609067387661,
+      "stop" : 1609067387731,
+      "duration" : 70
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_adddata",
+    "time" : {
+      "start" : 1609067387861,
+      "stop" : 1609067387881,
+      "duration" : 20
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "get_cal::0",
+    "time" : {
+      "start" : 1609067388681,
+      "stop" : 1609067388681,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_adddata::0",
+    "time" : {
+      "start" : 1609067388271,
+      "stop" : 1609067388271,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "run(order=1)"
+  }, {
+    "name" : "suite",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCal"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-VD3CM5VB"
+  }, {
+    "name" : "thread",
+    "value" : "4588-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "get_adddata",
+    "value" : "[None, None, None]"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "run(order=1)" ]
+  },
+  "source" : "978899f8298af86.json",
+  "parameterValues" : [ "[None, None, None]" ]
+}

@@ -1,0 +1,133 @@
+{
+  "uid" : "3ff10f1243028ff4",
+  "name" : "test_add[except]",
+  "fullName" : "test_cal_new.TestCal#test_add",
+  "historyId" : "627226f6a6f87b2485231713ce71ce02",
+  "time" : {
+    "start" : 1609067455465,
+    "stop" : 1609067455465,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert False",
+  "statusTrace" : "self = <test_cal_new.TestCal object at 0x000001F586069A00>, get_cal = <pythoncode.calculator.Calculator object at 0x000001F58604C040>\nget_adddata = ['pelease input', '1', '']\n\n    @pytest.mark.run(order=1)\n    def test_add(self,get_cal,get_adddata):\n        try:\n            cal = get_cal\n            list1 = get_adddata\n>           assert cal.add(list1[0], list1[1]) == approx(list1[2], rel=1e-2)\n\ntest_cal_new.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nexpected = '', rel = 0.01, abs = None, nan_ok = False\n\n    def approx(expected, rel=None, abs=None, nan_ok: bool = False) -> ApproxBase:\n        \"\"\"Assert that two numbers (or two sets of numbers) are equal to each other\n        within some tolerance.\n    \n        Due to the `intricacies of floating-point arithmetic`__, numbers that we\n        would intuitively expect to be equal are not always so::\n    \n            >>> 0.1 + 0.2 == 0.3\n            False\n    \n        __ https://docs.python.org/3/tutorial/floatingpoint.html\n    \n        This problem is commonly encountered when writing tests, e.g. when making\n        sure that floating-point values are what you expect them to be.  One way to\n        deal with this problem is to assert that two floating-point numbers are\n        equal to within some appropriate tolerance::\n    \n            >>> abs((0.1 + 0.2) - 0.3) < 1e-6\n            True\n    \n        However, comparisons like this are tedious to write and difficult to\n        understand.  Furthermore, absolute comparisons like the one above are\n        usually discouraged because there's no tolerance that works well for all\n        situations.  ``1e-6`` is good for numbers around ``1``, but too small for\n        very big numbers and too big for very small ones.  It's better to express\n        the tolerance as a fraction of the expected value, but relative comparisons\n        like that are even more difficult to write correctly and concisely.\n    \n        The ``approx`` class performs floating-point comparisons using a syntax\n        that's as intuitive as possible::\n    \n            >>> from pytest import approx\n            >>> 0.1 + 0.2 == approx(0.3)\n            True\n    \n        The same syntax also works for sequences of numbers::\n    \n            >>> (0.1 + 0.2, 0.2 + 0.4) == approx((0.3, 0.6))\n            True\n    \n        Dictionary *values*::\n    \n            >>> {'a': 0.1 + 0.2, 'b': 0.2 + 0.4} == approx({'a': 0.3, 'b': 0.6})\n            True\n    \n        ``numpy`` arrays::\n    \n            >>> import numpy as np                                                          # doctest: +SKIP\n            >>> np.array([0.1, 0.2]) + np.array([0.2, 0.4]) == approx(np.array([0.3, 0.6])) # doctest: +SKIP\n            True\n    \n        And for a ``numpy`` array against a scalar::\n    \n            >>> import numpy as np                                         # doctest: +SKIP\n            >>> np.array([0.1, 0.2]) + np.array([0.2, 0.1]) == approx(0.3) # doctest: +SKIP\n            True\n    \n        By default, ``approx`` considers numbers within a relative tolerance of\n        ``1e-6`` (i.e. one part in a million) of its expected value to be equal.\n        This treatment would lead to surprising results if the expected value was\n        ``0.0``, because nothing but ``0.0`` itself is relatively close to ``0.0``.\n        To handle this case less surprisingly, ``approx`` also considers numbers\n        within an absolute tolerance of ``1e-12`` of its expected value to be\n        equal.  Infinity and NaN are special cases.  Infinity is only considered\n        equal to itself, regardless of the relative tolerance.  NaN is not\n        considered equal to anything by default, but you can make it be equal to\n        itself by setting the ``nan_ok`` argument to True.  (This is meant to\n        facilitate comparing arrays that use NaN to mean \"no data\".)\n    \n        Both the relative and absolute tolerances can be changed by passing\n        arguments to the ``approx`` constructor::\n    \n            >>> 1.0001 == approx(1)\n            False\n            >>> 1.0001 == approx(1, rel=1e-3)\n            True\n            >>> 1.0001 == approx(1, abs=1e-3)\n            True\n    \n        If you specify ``abs`` but not ``rel``, the comparison will not consider\n        the relative tolerance at all.  In other words, two numbers that are within\n        the default relative tolerance of ``1e-6`` will still be considered unequal\n        if they exceed the specified absolute tolerance.  If you specify both\n        ``abs`` and ``rel``, the numbers will be considered equal if either\n        tolerance is met::\n    \n            >>> 1 + 1e-8 == approx(1)\n            True\n            >>> 1 + 1e-8 == approx(1, abs=1e-12)\n            False\n            >>> 1 + 1e-8 == approx(1, rel=1e-6, abs=1e-12)\n            True\n    \n        If you're thinking about using ``approx``, then you might want to know how\n        it compares to other good ways of comparing floating-point numbers.  All of\n        these algorithms are based on relative and absolute tolerances and should\n        agree for the most part, but they do have meaningful differences:\n    \n        - ``math.isclose(a, b, rel_tol=1e-9, abs_tol=0.0)``:  True if the relative\n          tolerance is met w.r.t. either ``a`` or ``b`` or if the absolute\n          tolerance is met.  Because the relative tolerance is calculated w.r.t.\n          both ``a`` and ``b``, this test is symmetric (i.e.  neither ``a`` nor\n          ``b`` is a \"reference value\").  You have to specify an absolute tolerance\n          if you want to compare to ``0.0`` because there is no tolerance by\n          default.  Only available in python>=3.5.  `More information...`__\n    \n          __ https://docs.python.org/3/library/math.html#math.isclose\n    \n        - ``numpy.isclose(a, b, rtol=1e-5, atol=1e-8)``: True if the difference\n          between ``a`` and ``b`` is less that the sum of the relative tolerance\n          w.r.t. ``b`` and the absolute tolerance.  Because the relative tolerance\n          is only calculated w.r.t. ``b``, this test is asymmetric and you can\n          think of ``b`` as the reference value.  Support for comparing sequences\n          is provided by ``numpy.allclose``.  `More information...`__\n    \n          __ http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.isclose.html\n    \n        - ``unittest.TestCase.assertAlmostEqual(a, b)``: True if ``a`` and ``b``\n          are within an absolute tolerance of ``1e-7``.  No relative tolerance is\n          considered and the absolute tolerance cannot be changed, so this function\n          is not appropriate for very large or very small numbers.  Also, it's only\n          available in subclasses of ``unittest.TestCase`` and it's ugly because it\n          doesn't follow PEP8.  `More information...`__\n    \n          __ https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertAlmostEqual\n    \n        - ``a == pytest.approx(b, rel=1e-6, abs=1e-12)``: True if the relative\n          tolerance is met w.r.t. ``b`` or if the absolute tolerance is met.\n          Because the relative tolerance is only calculated w.r.t. ``b``, this test\n          is asymmetric and you can think of ``b`` as the reference value.  In the\n          special case that you explicitly specify an absolute tolerance but not a\n          relative tolerance, only the absolute tolerance is considered.\n    \n        .. warning::\n    \n           .. versionchanged:: 3.2\n    \n           In order to avoid inconsistent behavior, ``TypeError`` is\n           raised for ``>``, ``>=``, ``<`` and ``<=`` comparisons.\n           The example below illustrates the problem::\n    \n               assert approx(0.1) > 0.1 + 1e-10  # calls approx(0.1).__gt__(0.1 + 1e-10)\n               assert 0.1 + 1e-10 > approx(0.1)  # calls approx(0.1).__lt__(0.1 + 1e-10)\n    \n           In the second example one expects ``approx(0.1).__le__(0.1 + 1e-10)``\n           to be called. But instead, ``approx(0.1).__lt__(0.1 + 1e-10)`` is used to\n           comparison. This is because the call hierarchy of rich comparisons\n           follows a fixed behavior. `More information...`__\n    \n           __ https://docs.python.org/3/reference/datamodel.html#object.__ge__\n        \"\"\"\n    \n        # Delegate the comparison to a class that knows how to deal with the type\n        # of the expected value (e.g. int, float, list, dict, numpy.array, etc).\n        #\n        # The primary responsibility of these classes is to implement ``__eq__()``\n        # and ``__repr__()``.  The former is used to actually check if some\n        # \"actual\" value is equivalent to the given expected value within the\n        # allowed tolerance.  The latter is used to show the user the expected\n        # value and tolerance, in the case that a test failed.\n        #\n        # The actual logic for making approximate comparisons can be found in\n        # ApproxScalar, which is used to compare individual numbers.  All of the\n        # other Approx classes eventually delegate to this class.  The ApproxBase\n        # class provides some convenient methods and overloads, but isn't really\n        # essential.\n    \n        __tracebackhide__ = True\n    \n        if isinstance(expected, Decimal):\n            cls = ApproxDecimal  # type: Type[ApproxBase]\n        elif isinstance(expected, Number):\n            cls = ApproxScalar\n        elif isinstance(expected, Mapping):\n            cls = ApproxMapping\n        elif _is_numpy_array(expected):\n            cls = ApproxNumpy\n        elif (\n            isinstance(expected, Iterable)\n            and isinstance(expected, Sized)\n            # Type ignored because the error is wrong -- not unreachable.\n            and not isinstance(expected, STRING_TYPES)  # type: ignore[unreachable]\n        ):\n            cls = ApproxSequencelike\n        else:\n>           raise _non_numeric_type_error(expected, at=None)\nE           TypeError: cannot make approximate comparisons to non-numeric values: ''\n\nc:\\users\\lenovo\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\_pytest\\python_api.py:504: TypeError\n\nDuring handling of the above exception, another exception occurred:\n\nself = <test_cal_new.TestCal object at 0x000001F586069A00>, get_cal = <pythoncode.calculator.Calculator object at 0x000001F58604C040>\nget_adddata = ['pelease input', '1', '']\n\n    @pytest.mark.run(order=1)\n    def test_add(self,get_cal,get_adddata):\n        try:\n            cal = get_cal\n            list1 = get_adddata\n            assert cal.add(list1[0], list1[1]) == approx(list1[2], rel=1e-2)\n        except Exception as e:\n                print(\"参数异常\")\n>               assert False\nE               assert False\n\ntest_cal_new.py:15: AssertionError",
+  "flaky" : true,
+  "beforeStages" : [ {
+    "name" : "get_adddata",
+    "time" : {
+      "start" : 1609067455465,
+      "stop" : 1609067455465,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_cal",
+    "time" : {
+      "start" : 1609067455085,
+      "stop" : 1609067455085,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "get_adddata::0",
+    "time" : {
+      "start" : 1609067455745,
+      "stop" : 1609067455745,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "get_cal::0",
+    "time" : {
+      "start" : 1609067455725,
+      "stop" : 1609067455735,
+      "duration" : 10
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "run(order=1)"
+  }, {
+    "name" : "suite",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCal"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-VD3CM5VB"
+  }, {
+    "name" : "thread",
+    "value" : "6128-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_cal_new"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "get_adddata",
+    "value" : "['pelease input', '1', '']"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "9adcb8858b42bc36",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert False",
+      "time" : {
+        "start" : 1609067388281,
+        "stop" : 1609067388281,
+        "duration" : 0
+      }
+    } ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=1)" ]
+  },
+  "source" : "3ff10f1243028ff4.json",
+  "parameterValues" : [ "['pelease input', '1', '']" ]
+}
